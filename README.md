@@ -1,31 +1,39 @@
-# Quantum Money Verification & Multi-Verifier Analysis
+# Quantum Information & Multi-Verifier Security Simulator
 
-[![Open In Colab](https://img.shields.io/badge/Open_In-Colab-orange.svg?logo=googlecolab)](https://colab.research.google.com/drive/1Fl_kGnm7378BJAjwvB2I8_Ya370VGmpv)
+An interactive Python application modeling **Wiesner's Quantum Money** protocol, state collapse dynamics, and multi-verifier security bounds under various adversarial attack strategies.
 
-A quantum information theory project analyzing verification strategies, state collapse dynamics, and multi-verifier security bounds for noise-tolerant quantum money systems.
-
----
-
-## Overview & Key Insights
-
-* **Optimal Measurement Strategy:** Analyzes token verification across classical/quantum verifiers using intermediate basis measurements (e.g., Breidbart basis on the Bloch sphere).
-* **Fidelity Bounds:** Demonstrates the $85.35\%$ per-verifier fidelity limit for single-qubit measurement strategies and models state degradation upon measurement.
-* **Multi-Verifier Security:** Simulates multi-round/multi-verifier scenarios, verifying that passing $n$ independent verifiers without central authority knowledge decays exponentially according to security limits (bounded by $(3/4)^n$).
+**Live App:** [View on Streamlit Cloud](https://quantum-money-verification.streamlit.app)
 
 ---
 
-## Simulation & Architecture
+## Overview
+Proposed by Stephen Wiesner in 1970, quantum money uses physical qubits rather than classical data, leveraging the **Quantum No-Cloning Theorem** to detect counterfeiting without relying on a central database. 
 
-The accompanying Python/Qiskit notebooks simulate:
-1. **Quantum Token State Preparation:** Encodings using random conjugate bases.
-2. **Sequential Measurement Attacks:** Impact of eavesdropping/cloning on token fidelity.
-3. **Multi-Verifier Verification Matrix:** Passing probabilities across multiple verification nodes under noise.
+This project implements a full-stack simulation dashboard to analyze how quantum states degrade when subjected to sequential verification nodes under different threat models:
+1. **Attacker 1 (Naive Random Guessing):** Blind guessing resulting in a 50% baseline efficiency.
+2. **Attacker 2 (Standard Intermediate Measurement):** Projective measurements along standard computational axes (~74.3% limit).
+3. **Attacker 3 (Optimal Breidbart Basis Attack):** Custom projection operators rotated by a 22.5° offset on the Bloch sphere to achieve the physical per-verifier ceiling of **85.35%** ($\frac{1 + 1/\sqrt{2}}{2}$).
 
 ---
 
-## Quickstart
+## Repository Structure
+* `app.py` — The interactive Streamlit frontend, featuring tabbed layouts, multi-node controls, and 3D Bloch sphere visualizations.
+* `simulation.py` — The backend quantum simulation engine handling qubit preparation, secret bases, and probability decay calculations.
+* `requirements.txt` — Project dependencies (`streamlit`, `numpy`, `matplotlib`).
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/PizzaPower55/quantum-money-verification.git
-   cd quantum-money-verification
+---
+
+## Running Locally
+
+Clone the repository and run the application locally via Streamlit:
+
+```bash
+# Clone the repository
+git clone [https://github.com/PizzaPower55/quantum-money-verification.git](https://github.com/PizzaPower55/quantum-money-verification.git)
+cd quantum-money-verification
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch the Streamlit app
+streamlit run app.py
