@@ -128,7 +128,7 @@ with tab_bloch:
         ax1.quiver(0, -1.2, 0, 0, 2.4, 0, color='black', arrow_length_ratio=0.1, linewidth=1)
         ax1.quiver(-1.2, 0, 0, 2.4, 0, 0, color='black', arrow_length_ratio=0.1, linewidth=1)
         
-        ax1.quiver(0, 0, 0, 0, 0, 1.0, color='blue', arrow_length_ratio=0.15, linewidth=2)
+        ax1.quiver(0, 0, 0, 0, 0, 1.0, color='cyan', arrow_length_ratio=0.15, linewidth=2.5)
         ax1.text(0, 0, 1.3, "|0⟩", fontsize=7, ha='center')
         
         ax1.set_xlim([-1.3, 1.3])
